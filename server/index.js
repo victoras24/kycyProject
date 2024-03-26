@@ -7,12 +7,13 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(cors())
 const corsOptions = {
-    origin: '*'
+    origin: '*',
+    credential: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
     if (req.url.endsWith('.js')) {
